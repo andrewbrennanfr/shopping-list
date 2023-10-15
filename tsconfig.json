@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "downlevelIteration": true,
+        "esModuleInterop": true,
+        "exactOptionalPropertyTypes": true,
+        "jsx": "react-jsx",
+        "noPropertyAccessFromIndexSignature": true,
+        "noUncheckedIndexedAccess": true,
+        "paths": {
+            "@/*": ["./src/*"]
+        },
+        "strict": true,
+        "types": ["bun-types"]
+    }
+}
