@@ -1809,59 +1809,6 @@ var require_react = __commonJS((exports, module) => {
   }
 });
 
-// node_modules/classnames/index.js
-var require_classnames = __commonJS((exports, module) => {
-  /*!
-  	Copyright (c) 2018 Jed Watson.
-  	Licensed under the MIT License (MIT), see
-  	http://jedwatson.github.io/classnames
-  */
-  (function() {
-    var hasOwn = {}.hasOwnProperty;
-    var nativeCodeString = "[native code]";
-    function classNames() {
-      var classes = [];
-      for (var i = 0;i < arguments.length; i++) {
-        var arg = arguments[i];
-        if (!arg)
-          continue;
-        var argType = typeof arg;
-        if (argType === "string" || argType === "number") {
-          classes.push(arg);
-        } else if (Array.isArray(arg)) {
-          if (arg.length) {
-            var inner = classNames.apply(null, arg);
-            if (inner) {
-              classes.push(inner);
-            }
-          }
-        } else if (argType === "object") {
-          if (arg.toString !== Object.prototype.toString && !arg.toString.toString().includes("[native code]")) {
-            classes.push(arg.toString());
-            continue;
-          }
-          for (var key in arg) {
-            if (hasOwn.call(arg, key) && arg[key]) {
-              classes.push(key);
-            }
-          }
-        }
-      }
-      return classes.join(" ");
-    }
-    if (typeof module !== "undefined" && exports) {
-      classNames.default = classNames;
-      module.exports = classNames;
-    } else if (typeof define === "function" && typeof define.amd === "object" && define.amd) {
-      define("classnames", [], function() {
-        return classNames;
-      });
-    } else {
-      window.classNames = classNames;
-    }
-  })();
-});
-
 // node_modules/react/cjs/react-jsx-dev-runtime.development.js
 var require_react_jsx_dev_runtime_development = __commonJS((exports) => {
   var React = __toESM(require_react(), 1);
@@ -2724,6 +2671,59 @@ var require_jsx_dev_runtime = __commonJS((exports, module) => {
   }
 });
 
+// node_modules/classnames/index.js
+var require_classnames = __commonJS((exports, module) => {
+  /*!
+  	Copyright (c) 2018 Jed Watson.
+  	Licensed under the MIT License (MIT), see
+  	http://jedwatson.github.io/classnames
+  */
+  (function() {
+    var hasOwn = {}.hasOwnProperty;
+    var nativeCodeString = "[native code]";
+    function classNames() {
+      var classes = [];
+      for (var i = 0;i < arguments.length; i++) {
+        var arg = arguments[i];
+        if (!arg)
+          continue;
+        var argType = typeof arg;
+        if (argType === "string" || argType === "number") {
+          classes.push(arg);
+        } else if (Array.isArray(arg)) {
+          if (arg.length) {
+            var inner = classNames.apply(null, arg);
+            if (inner) {
+              classes.push(inner);
+            }
+          }
+        } else if (argType === "object") {
+          if (arg.toString !== Object.prototype.toString && !arg.toString.toString().includes("[native code]")) {
+            classes.push(arg.toString());
+            continue;
+          }
+          for (var key in arg) {
+            if (hasOwn.call(arg, key) && arg[key]) {
+              classes.push(key);
+            }
+          }
+        }
+      }
+      return classes.join(" ");
+    }
+    if (typeof module !== "undefined" && exports) {
+      classNames.default = classNames;
+      module.exports = classNames;
+    } else if (typeof define === "function" && typeof define.amd === "object" && define.amd) {
+      define("classnames", [], function() {
+        return classNames;
+      });
+    } else {
+      window.classNames = classNames;
+    }
+  })();
+});
+
 // node_modules/scheduler/cjs/scheduler.development.js
 var require_scheduler_development = __commonJS((exports) => {
   if (true) {
@@ -3237,7 +3237,7 @@ var require_react_dom_development = __commonJS((exports) => {
       var HostPortal = 4;
       var HostComponent = 5;
       var HostText = 6;
-      var Fragment = 7;
+      var Fragment2 = 7;
       var Mode = 8;
       var ContextConsumer = 9;
       var ContextProvider = 10;
@@ -4194,7 +4194,7 @@ var require_react_dom_development = __commonJS((exports) => {
             return "DehydratedFragment";
           case ForwardRef:
             return getWrappedName$1(type, type.render, "ForwardRef");
-          case Fragment:
+          case Fragment2:
             return "Fragment";
           case HostComponent:
             return type;
@@ -13524,7 +13524,7 @@ var require_react_dom_development = __commonJS((exports) => {
           }
         }
         function updateFragment2(returnFiber, current2, fragment, lanes, key) {
-          if (current2 === null || current2.tag !== Fragment) {
+          if (current2 === null || current2.tag !== Fragment2) {
             var created = createFiberFromFragment(fragment, returnFiber.mode, lanes, key);
             created.return = returnFiber;
             return created;
@@ -13926,7 +13926,7 @@ var require_react_dom_development = __commonJS((exports) => {
             if (child.key === key) {
               var elementType = element.type;
               if (elementType === REACT_FRAGMENT_TYPE) {
-                if (child.tag === Fragment) {
+                if (child.tag === Fragment2) {
                   deleteRemainingChildren(returnFiber, child.sibling);
                   var existing = useFiber(child, element.props.children);
                   existing.return = returnFiber;
@@ -17967,7 +17967,7 @@ var require_react_dom_development = __commonJS((exports) => {
             var _resolvedProps2 = workInProgress2.elementType === type ? _unresolvedProps2 : resolveDefaultProps(type, _unresolvedProps2);
             return updateForwardRef(current2, workInProgress2, type, _resolvedProps2, renderLanes2);
           }
-          case Fragment:
+          case Fragment2:
             return updateFragment(current2, workInProgress2, renderLanes2);
           case Mode:
             return updateMode(current2, workInProgress2, renderLanes2);
@@ -18234,7 +18234,7 @@ var require_react_dom_development = __commonJS((exports) => {
           case SimpleMemoComponent:
           case FunctionComponent:
           case ForwardRef:
-          case Fragment:
+          case Fragment2:
           case Mode:
           case Profiler:
           case ContextConsumer:
@@ -22444,7 +22444,7 @@ var require_react_dom_development = __commonJS((exports) => {
         return fiber;
       }
       function createFiberFromFragment(elements, mode, lanes, key) {
-        var fiber = createFiber(Fragment, elements, key, mode);
+        var fiber = createFiber(Fragment2, elements, key, mode);
         fiber.lanes = lanes;
         return fiber;
       }
@@ -23524,8 +23524,167 @@ var require_client = __commonJS((exports) => {
   var i;
 });
 
+// src/entities/Emoji.ts
+var Emoji = /\p{Emoji}/u;
+var removeAllEmojis = (string) => string.replaceAll(new RegExp(Emoji.source, `g${Emoji.flags}`), "");
+
+// src/entities/Recipe.ts
+var findRecipe = (recipes, recipeId) => recipes.find(({ id }) => id === recipeId);
+
+// src/entities/Category.ts
+var makeCategoriesDisplayable = ({
+  categories,
+  recipes
+}) => categories.map(({ id, contents, name }) => ({
+  id,
+  contents: contents.map((recipeId) => findRecipe(recipes, recipeId)).filter((recipe) => !!recipe).map(({ id: recipeId, name: recipeName }) => ({
+    recipeId,
+    recipeName
+  })).sort(({ recipeName: recipeNameA }, { recipeName: recipeNameB }) => removeAllEmojis(recipeNameA).localeCompare(removeAllEmojis(recipeNameB))),
+  name
+})).sort(({ name: nameA }, { name: nameB }) => removeAllEmojis(nameA).localeCompare(removeAllEmojis(nameB)));
+
+// src/components/RecipeSelector.tsx
+var jsx_dev_runtime = __toESM(require_jsx_dev_runtime(), 1);
+var RecipeSelector = ({
+  data,
+  selectedRecipeIds,
+  setSelectedRecipeIds
+}) => jsx_dev_runtime.jsxDEV("div", {
+  className: "pb-5",
+  children: [
+    jsx_dev_runtime.jsxDEV("div", {
+      className: "indicator",
+      children: [
+        jsx_dev_runtime.jsxDEV("span", {
+          className: "badge badge-neutral badge-outline indicator-item",
+          children: Object.values(selectedRecipeIds).flat().length
+        }, undefined, false, undefined, this),
+        jsx_dev_runtime.jsxDEV("h1", {
+          className: "font-light pr-5 text-2xl",
+          children: "\uD83E\uDDD1\u200D\uD83C\uDF73 Select your recipes"
+        }, undefined, false, undefined, this)
+      ]
+    }, undefined, true, undefined, this),
+    makeCategoriesDisplayable(data).map((categoryDisplayble) => jsx_dev_runtime.jsxDEV("div", {
+      className: "form-control mt-3 w-full",
+      children: [
+        jsx_dev_runtime.jsxDEV("label", {
+          className: "label",
+          children: jsx_dev_runtime.jsxDEV("span", {
+            className: "label-text",
+            children: categoryDisplayble.name
+          }, undefined, false, undefined, this)
+        }, undefined, false, undefined, this),
+        jsx_dev_runtime.jsxDEV("select", {
+          className: "select select-bordered",
+          onChange: (event) => {
+            setSelectedRecipeIds({
+              ...selectedRecipeIds,
+              [categoryDisplayble.id]: Array.prototype.slice.call(event.target.options).filter((option) => option.selected).map((option) => option.value)
+            });
+          },
+          multiple: true,
+          tabIndex: -1,
+          value: selectedRecipeIds[categoryDisplayble.id] || [],
+          children: categoryDisplayble.contents.map(({ recipeId, recipeName }) => jsx_dev_runtime.jsxDEV("option", {
+            value: recipeId,
+            children: recipeName
+          }, recipeId, false, undefined, this))
+        }, undefined, false, undefined, this)
+      ]
+    }, categoryDisplayble.id, true, undefined, this))
+  ]
+}, undefined, true, undefined, this);
+
+// src/entities/Amount.ts
+var findAmount = (amounts, amountId) => amounts.find(({ id }) => id === amountId);
+
 // src/entities/Ingredient.ts
 var findIngredient = (ingredients, ingredientId) => ingredients.find(({ id }) => id === ingredientId);
+
+// src/entities/Unit.ts
+var findUnit = (units, unitId) => units.find(({ id }) => id === unitId);
+
+// src/entities/List.ts
+var makeList = (recipes) => Object.values(recipes.map(({ contents }) => contents).flat().reduce((record, { amountId, ingredientId, unitId }, i) => {
+  const id = `${ingredientId}_${unitId}`;
+  const ingredient = record[id];
+  const amountIds = [amountId];
+  if (ingredient)
+    return {
+      ...record,
+      [id]: {
+        ...ingredient,
+        amountIds: [
+          ...ingredient.amountIds,
+          ...amountIds
+        ]
+      }
+    };
+  return {
+    ...record,
+    [id]: {
+      amountIds,
+      id,
+      ingredientId,
+      unitId
+    }
+  };
+}, {}));
+var makeListDisplayable = (list, { amounts, ingredients, units }) => list.map(({ amountIds, id, ingredientId, unitId }) => ({
+  id,
+  ingredientName: findIngredient(ingredients, ingredientId)?.name || "",
+  totalAmount: amountIds.map((amountId) => findAmount(amounts, amountId)).filter((amount) => !!amount).reduce((totalAmount, { value }) => totalAmount + value, 0),
+  unitType: findUnit(units, unitId)?.type || ""
+})).sort(({ ingredientName: ingredientNameA }, { ingredientName: ingredientNameB }) => removeAllEmojis(ingredientNameA).trim().localeCompare(removeAllEmojis(ingredientNameB).trim()));
+
+// src/components/ShoppingList.tsx
+var import_react = __toESM(require_react(), 1);
+var jsx_dev_runtime2 = __toESM(require_jsx_dev_runtime(), 1);
+var ShoppingList = ({
+  data,
+  selectedRecipeIds
+}) => {
+  const list = makeList(data.recipes.filter((recipe) => Object.values(selectedRecipeIds).flat().includes(recipe.id)));
+  const listDisplayable = makeListDisplayable(list, data);
+  const [checkedIngredients, setCheckedIngredients] = import_react.useState([]);
+  return jsx_dev_runtime2.jsxDEV("div", {
+    className: "pb-20 pt-3",
+    children: [
+      jsx_dev_runtime2.jsxDEV("h1", {
+        className: "font-light pr-5 text-2xl",
+        children: "\uD83D\uDCDD To buy"
+      }, undefined, false, undefined, this),
+      jsx_dev_runtime2.jsxDEV("progress", {
+        className: "mt-3 progress w-full",
+        max: listDisplayable.length,
+        value: checkedIngredients.length
+      }, undefined, false, undefined, this),
+      jsx_dev_runtime2.jsxDEV("div", {
+        className: "form-control mt-3 w-full",
+        children: jsx_dev_runtime2.jsxDEV("select", {
+          className: "select select-bordered",
+          onChange: (event) => {
+            setCheckedIngredients(Array.prototype.slice.call(event.target.options).filter((option) => option.selected).map((option) => option.value));
+          },
+          multiple: true,
+          tabIndex: -1,
+          value: checkedIngredients,
+          children: listDisplayable.map((item) => jsx_dev_runtime2.jsxDEV("option", {
+            value: item.id,
+            children: [
+              item.ingredientName,
+              " - ",
+              item.totalAmount,
+              item.unitType
+            ]
+          }, item.id, true, undefined, this))
+        }, undefined, false, undefined, this)
+      }, undefined, false, undefined, this)
+    ]
+  }, undefined, true, undefined, this);
+};
 
 // src/entities/Data.ts
 var fetchData = (fetchArg, storageArg) => {
@@ -23596,68 +23755,80 @@ var fetchData = (fetchArg, storageArg) => {
   });
 };
 
-// src/hooks/useData.ts
-var import_react = __toESM(require_react(), 1);
-var useData = () => {
-  const [data, setData] = import_react.useState(null);
-  import_react.useEffect(() => {
+// src/components/PageContent.tsx
+var import_react2 = __toESM(require_react(), 1);
+var jsx_dev_runtime3 = __toESM(require_jsx_dev_runtime(), 1);
+var PageContent = () => {
+  const [selectedRecipeIds, setSelectedRecipeIds] = import_react2.useState({});
+  const [data, setData] = import_react2.useState(null);
+  import_react2.useEffect(() => {
     fetchData().then(setData);
   }, []);
-  return { data };
-};
-
-// src/hooks/useSelectedRecipeIds.ts
-var import_react2 = __toESM(require_react(), 1);
-var useSelectedRecipeIds = () => {
-  const [selectedRecipeIds, setSelectedRecipeIds] = import_react2.useState({});
-  const handleSelectRecipeIds = (categoryId, recipeIds) => {
-    setSelectedRecipeIds({ ...selectedRecipeIds, [categoryId]: recipeIds });
-  };
-  const hasSelectedRecipeIds = (selectedRecipeIds2) => !!Object.values(selectedRecipeIds2).flat().length;
-  return {
-    handleSelectRecipeIds,
-    hasSelectedRecipeIds,
-    selectedRecipeIds
-  };
-};
-
-// src/hooks/useLocalStorage.ts
-var useLocalStorage = () => {
-  const localData = localStorage.getItem("DATA");
-  const localUrl = localStorage.getItem("URL");
-  const handleUpdateLocalStorage = () => {
-    if (localUrl)
-      localStorage.removeItem("DATA");
-    else {
-      const pastedUrl = prompt("Paste your URL");
-      if (pastedUrl)
-        localStorage.setItem("URL", pastedUrl);
-    }
-    window.location.reload();
-  };
-  return { handleUpdateLocalStorage, localData, localUrl };
-};
-
-// src/modules/PageHeader.tsx
-var import_classnames = __toESM(require_classnames(), 1);
-var jsx_dev_runtime = __toESM(require_jsx_dev_runtime(), 1);
-var PageHeader = () => {
-  const { handleUpdateLocalStorage, localUrl } = useLocalStorage();
-  return jsx_dev_runtime.jsxDEV("nav", {
-    className: "bg-light border-bottom navbar navbar-expand-lg shadow-sm",
-    children: jsx_dev_runtime.jsxDEV("div", {
-      className: "container-fluid",
+  return jsx_dev_runtime3.jsxDEV("div", {
+    className: "pb-7 pt-7 px-5",
+    children: data && jsx_dev_runtime3.jsxDEV(jsx_dev_runtime3.Fragment, {
       children: [
-        jsx_dev_runtime.jsxDEV("h1", {
-          className: "fw-light mb-0",
-          style: { fontFamily: "'Nunito', sans-serif" },
-          children: "\uD83D\uDED2 Shopping"
+        jsx_dev_runtime3.jsxDEV(RecipeSelector, {
+          data,
+          selectedRecipeIds,
+          setSelectedRecipeIds
         }, undefined, false, undefined, this),
-        jsx_dev_runtime.jsxDEV("button", {
-          className: "btn btn-outline-secondary",
-          onClick: handleUpdateLocalStorage,
-          children: jsx_dev_runtime.jsxDEV("i", {
-            className: import_classnames.default("bi", localUrl ? "bi-arrow-clockwise" : "bi-gear")
+        !!Object.values(selectedRecipeIds).flat().length && jsx_dev_runtime3.jsxDEV(jsx_dev_runtime3.Fragment, {
+          children: [
+            jsx_dev_runtime3.jsxDEV("div", {
+              className: "divider text-3xl",
+              children: "\uD83D\uDC47"
+            }, undefined, false, undefined, this),
+            jsx_dev_runtime3.jsxDEV(ShoppingList, {
+              data,
+              selectedRecipeIds
+            }, undefined, false, undefined, this)
+          ]
+        }, undefined, true, undefined, this)
+      ]
+    }, undefined, true, undefined, this)
+  }, undefined, false, undefined, this);
+};
+
+// src/components/UrlModal.tsx
+var import_react3 = __toESM(require_react(), 1);
+var jsx_dev_runtime4 = __toESM(require_jsx_dev_runtime(), 1);
+var UrlModal = ({ id }) => {
+  const [url, setUrl] = import_react3.useState("");
+  return jsx_dev_runtime4.jsxDEV("dialog", {
+    className: "modal",
+    id,
+    children: jsx_dev_runtime4.jsxDEV("div", {
+      className: "modal-box",
+      children: [
+        jsx_dev_runtime4.jsxDEV("h3", {
+          className: "font-bold text-lg",
+          children: "\uD83D\uDD17 Paste your url here"
+        }, undefined, false, undefined, this),
+        jsx_dev_runtime4.jsxDEV("p", {
+          className: "py-4",
+          children: jsx_dev_runtime4.jsxDEV("input", {
+            className: "input input-bordered w-full",
+            onChange: (event) => {
+              setUrl(event.target.value);
+            },
+            placeholder: "https://example.com/",
+            type: "text",
+            value: url
+          }, undefined, false, undefined, this)
+        }, undefined, false, undefined, this),
+        jsx_dev_runtime4.jsxDEV("div", {
+          className: "modal-action",
+          children: jsx_dev_runtime4.jsxDEV("form", {
+            method: "dialog",
+            onSubmit: () => {
+              localStorage.setItem("URL", url);
+              window.location.reload();
+            },
+            children: jsx_dev_runtime4.jsxDEV("button", {
+              className: "btn btn-neutral",
+              children: "Save"
+            }, undefined, false, undefined, this)
           }, undefined, false, undefined, this)
         }, undefined, false, undefined, this)
       ]
@@ -23665,204 +23836,45 @@ var PageHeader = () => {
   }, undefined, false, undefined, this);
 };
 
-// src/entities/Emoji.ts
-var Emoji = /\p{Emoji}/u;
-var extractLeadingEmoji = (string) => {
-  const match = string.match(Emoji);
-  return match && match[0] && match.index === 0 ? { emoji: match[0], text: string.replace(Emoji, "") } : { emoji: null, text: string };
-};
-var removeAllEmojis = (string) => string.replaceAll(new RegExp(Emoji.source, `g${Emoji.flags}`), "");
-
-// src/entities/Recipe.ts
-var findRecipe = (recipes, recipeId) => recipes.find(({ id }) => id === recipeId);
-
-// src/entities/Category.ts
-var makeCategoriesDisplayable = ({
-  categories,
-  recipes
-}) => categories.map(({ id, contents, name }) => ({
-  id,
-  contents: contents.map((recipeId) => findRecipe(recipes, recipeId)).filter((recipe) => !!recipe).map(({ id: recipeId, name: recipeName }) => ({
-    recipeId,
-    recipeName
-  })).sort(({ recipeName: recipeNameA }, { recipeName: recipeNameB }) => removeAllEmojis(recipeNameA).localeCompare(removeAllEmojis(recipeNameB))),
-  name
-})).sort(({ name: nameA }, { name: nameB }) => removeAllEmojis(nameA).localeCompare(removeAllEmojis(nameB)));
-
-// src/modules/RecipeSelector.tsx
-var import_classnames2 = __toESM(require_classnames(), 1);
-var import_react3 = __toESM(require_react(), 1);
-var jsx_dev_runtime2 = __toESM(require_jsx_dev_runtime(), 1);
-var RecipeSelector = ({
-  data,
-  selectedRecipeIds,
-  onSelectRecipeIds
-}) => {
-  const [isCollapsed, setIsCollapsed] = import_react3.useState(false);
-  const handleToggleCollapse = () => {
-    setIsCollapsed(!isCollapsed);
-  };
-  const selectedRecipeCount = Object.values(selectedRecipeIds).flat().length;
-  const handleSelectRecipes = (categoryId, event) => {
-    const selectedRecipeIds2 = Array.prototype.slice.call(event.target.options).filter((option) => option.selected).map((option) => option.value);
-    onSelectRecipeIds(categoryId, selectedRecipeIds2);
-  };
-  const categoriesDisplayable = makeCategoriesDisplayable(data);
-  return jsx_dev_runtime2.jsxDEV("div", {
-    className: "container-fluid mb-5 mt-5",
+// src/components/PageHeader.tsx
+var import_classnames = __toESM(require_classnames(), 1);
+var jsx_dev_runtime5 = __toESM(require_jsx_dev_runtime(), 1);
+var PageHeader = () => {
+  const localUrl = localStorage.getItem("URL");
+  const urlModalId = "urlModalId";
+  return jsx_dev_runtime5.jsxDEV("div", {
+    className: "bg-base-200 border-b navbar",
     children: [
-      jsx_dev_runtime2.jsxDEV("h2", {
-        className: "align-items-center d-flex fw-light justify-content-between mb-3",
+      jsx_dev_runtime5.jsxDEV("div", {
+        className: "navbar-start",
+        children: jsx_dev_runtime5.jsxDEV("a", {
+          className: "btn btn-ghost normal-case text-xl",
+          href: ".",
+          style: { fontFamily: "'Nunito', sans-serif" },
+          children: "\uD83D\uDED2 Shopping List"
+        }, undefined, false, undefined, this)
+      }, undefined, false, undefined, this),
+      jsx_dev_runtime5.jsxDEV("div", {
+        className: "navbar-end",
         children: [
-          jsx_dev_runtime2.jsxDEV("div", {
-            children: [
-              "\uD83D\uDC69\u200D\uD83C\uDF73 Choose your recipes (",
-              selectedRecipeCount,
-              ")"
-            ]
-          }, undefined, true, undefined, this),
-          jsx_dev_runtime2.jsxDEV("button", {
-            className: import_classnames2.default("btn", isCollapsed ? "btn-secondary" : "btn-primary"),
-            onClick: handleToggleCollapse,
-            children: jsx_dev_runtime2.jsxDEV("i", {
-              className: import_classnames2.default("bi", isCollapsed ? "bi-eye-slash-fill" : "bi-eye-fill")
+          jsx_dev_runtime5.jsxDEV("button", {
+            className: "btn btn-circle btn-neutral",
+            onClick: () => {
+              if (localUrl) {
+                localStorage.removeItem("DATA");
+                window.location.reload();
+                return;
+              }
+              const urlModal = document.getElementById(urlModalId);
+              if (urlModal instanceof HTMLDialogElement)
+                urlModal.showModal();
+            },
+            children: jsx_dev_runtime5.jsxDEV("i", {
+              className: import_classnames.default("fa-solid", localUrl ? "fa-rotate" : "fa-link")
             }, undefined, false, undefined, this)
-          }, undefined, false, undefined, this)
-        ]
-      }, undefined, true, undefined, this),
-      jsx_dev_runtime2.jsxDEV("div", {
-        className: import_classnames2.default("collapse", !isCollapsed && "show"),
-        children: categoriesDisplayable.map(({ contents, id, name }) => jsx_dev_runtime2.jsxDEV("div", {
-          className: "mb-3",
-          children: [
-            jsx_dev_runtime2.jsxDEV("label", {
-              className: "form-label",
-              children: name
-            }, undefined, false, undefined, this),
-            jsx_dev_runtime2.jsxDEV("select", {
-              className: "form-select",
-              multiple: true,
-              onChange: handleSelectRecipes.bind(null, id),
-              value: selectedRecipeIds[id] || [],
-              children: contents.map(({ recipeId, recipeName }) => jsx_dev_runtime2.jsxDEV("option", {
-                value: recipeId,
-                children: recipeName
-              }, recipeId, false, undefined, this))
-            }, undefined, false, undefined, this)
-          ]
-        }, id, true, undefined, this))
-      }, undefined, false, undefined, this)
-    ]
-  }, undefined, true, undefined, this);
-};
-
-// src/entities/Amount.ts
-var findAmount = (amounts, amountId) => amounts.find(({ id }) => id === amountId);
-
-// src/entities/Unit.ts
-var findUnit = (units, unitId) => units.find(({ id }) => id === unitId);
-
-// src/entities/List.ts
-var makeList = (recipes) => Object.values(recipes.map(({ contents }) => contents).flat().reduce((record, { amountId, ingredientId, unitId }, i) => {
-  const id = `${ingredientId}_${unitId}`;
-  const ingredient = record[id];
-  const amountIds = [amountId];
-  if (ingredient)
-    return {
-      ...record,
-      [id]: {
-        ...ingredient,
-        amountIds: [
-          ...ingredient.amountIds,
-          ...amountIds
-        ]
-      }
-    };
-  return {
-    ...record,
-    [id]: {
-      amountIds,
-      id,
-      ingredientId,
-      unitId
-    }
-  };
-}, {}));
-var makeListDisplayable = (list, { amounts, ingredients, units }) => list.map(({ amountIds, id, ingredientId, unitId }) => ({
-  id,
-  ingredientName: findIngredient(ingredients, ingredientId)?.name || "",
-  totalAmount: amountIds.map((amountId) => findAmount(amounts, amountId)).filter((amount) => !!amount).reduce((totalAmount, { value }) => totalAmount + value, 0),
-  unitType: findUnit(units, unitId)?.type || ""
-})).sort(({ ingredientName: ingredientNameA }, { ingredientName: ingredientNameB }) => removeAllEmojis(ingredientNameA).trim().localeCompare(removeAllEmojis(ingredientNameB).trim()));
-var makeListPlain = (list, data) => makeListDisplayable(list, data).map(({ ingredientName, totalAmount, unitType }) => ({
-  ...extractLeadingEmoji(ingredientName),
-  totalAmount,
-  unitType
-})).map(({ emoji, text, totalAmount, unitType }) => `- ${text.trim()} - ${totalAmount}${unitType} ${emoji || ""}`.trim()).join("\n");
-
-// src/modules/ShoppingList.tsx
-var import_classnames3 = __toESM(require_classnames(), 1);
-var import_react4 = __toESM(require_react(), 1);
-var jsx_dev_runtime3 = __toESM(require_jsx_dev_runtime(), 1);
-var ShoppingList = ({
-  data,
-  selectedRecipeIds
-}) => {
-  const [isCopied, setIsCopied] = import_react4.useState(false);
-  const handleClickCopy = () => {
-    navigator.clipboard.writeText(makeListPlain(list, data));
-    setIsCopied(true);
-    setTimeout(setIsCopied, 2000, false);
-  };
-  const selectedRecipes = data.recipes.filter((recipe) => Object.values(selectedRecipeIds).flat().includes(recipe.id));
-  const list = makeList(selectedRecipes);
-  const listDisplayable = makeListDisplayable(list, data);
-  return jsx_dev_runtime3.jsxDEV("div", {
-    className: "container-fluid mt-5 pb-5",
-    children: [
-      jsx_dev_runtime3.jsxDEV("h2", {
-        className: "align-items-center d-flex fw-light justify-content-between mb-3",
-        children: [
-          "\uD83D\uDCDD Your shopping list",
-          jsx_dev_runtime3.jsxDEV("button", {
-            className: import_classnames3.default("btn", isCopied ? "btn-success" : "btn-primary"),
-            onClick: handleClickCopy,
-            children: jsx_dev_runtime3.jsxDEV("i", {
-              className: import_classnames3.default("bi", isCopied ? "bi-check-circle-fill" : "bi-arrow-down-circle-fill")
-            }, undefined, false, undefined, this)
-          }, undefined, false, undefined, this)
-        ]
-      }, undefined, true, undefined, this),
-      jsx_dev_runtime3.jsxDEV("table", {
-        className: "mb-5 table table-sm",
-        children: [
-          jsx_dev_runtime3.jsxDEV("thead", {
-            children: jsx_dev_runtime3.jsxDEV("tr", {
-              children: [
-                jsx_dev_runtime3.jsxDEV("th", {
-                  children: "Ingredient"
-                }, undefined, false, undefined, this),
-                jsx_dev_runtime3.jsxDEV("th", {
-                  children: "Amount"
-                }, undefined, false, undefined, this)
-              ]
-            }, undefined, true, undefined, this)
           }, undefined, false, undefined, this),
-          jsx_dev_runtime3.jsxDEV("tbody", {
-            children: listDisplayable.map(({ id, ingredientName, totalAmount, unitType }) => jsx_dev_runtime3.jsxDEV("tr", {
-              children: [
-                jsx_dev_runtime3.jsxDEV("td", {
-                  children: ingredientName
-                }, undefined, false, undefined, this),
-                jsx_dev_runtime3.jsxDEV("td", {
-                  children: [
-                    totalAmount,
-                    " ",
-                    unitType
-                  ]
-                }, undefined, true, undefined, this)
-              ]
-            }, id, true, undefined, this))
+          !localUrl && jsx_dev_runtime5.jsxDEV(UrlModal, {
+            id: urlModalId
           }, undefined, false, undefined, this)
         ]
       }, undefined, true, undefined, this)
@@ -23872,29 +23884,13 @@ var ShoppingList = ({
 
 // index.tsx
 var client = __toESM(require_client(), 1);
-var jsx_dev_runtime4 = __toESM(require_jsx_dev_runtime(), 1);
-var App = () => {
-  const { data } = useData();
-  const { handleSelectRecipeIds, hasSelectedRecipeIds, selectedRecipeIds } = useSelectedRecipeIds();
-  return jsx_dev_runtime4.jsxDEV(jsx_dev_runtime4.Fragment, {
-    children: [
-      jsx_dev_runtime4.jsxDEV(PageHeader, {}, undefined, false, undefined, this),
-      data && jsx_dev_runtime4.jsxDEV(jsx_dev_runtime4.Fragment, {
-        children: [
-          jsx_dev_runtime4.jsxDEV(RecipeSelector, {
-            data,
-            onSelectRecipeIds: handleSelectRecipeIds,
-            selectedRecipeIds
-          }, undefined, false, undefined, this),
-          hasSelectedRecipeIds(selectedRecipeIds) && jsx_dev_runtime4.jsxDEV(ShoppingList, {
-            data,
-            selectedRecipeIds
-          }, undefined, false, undefined, this)
-        ]
-      }, undefined, true, undefined, this)
-    ]
-  }, undefined, true, undefined, this);
-};
+var jsx_dev_runtime6 = __toESM(require_jsx_dev_runtime(), 1);
+var App = () => jsx_dev_runtime6.jsxDEV(jsx_dev_runtime6.Fragment, {
+  children: [
+    jsx_dev_runtime6.jsxDEV(PageHeader, {}, undefined, false, undefined, this),
+    jsx_dev_runtime6.jsxDEV(PageContent, {}, undefined, false, undefined, this)
+  ]
+}, undefined, true, undefined, this);
 var main = document.getElementById("main");
 if (main)
-  client.createRoot(main).render(jsx_dev_runtime4.jsxDEV(App, {}, undefined, false, undefined, this));
+  client.createRoot(main).render(jsx_dev_runtime6.jsxDEV(App, {}, undefined, false, undefined, this));

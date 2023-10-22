@@ -3,19 +3,19 @@
     "scripts": {
         "dev": "bun build ./index.tsx --outdir ./docs --watch",
         "serve": "bun run ./server.ts",
-        "watch": "bun test --watch"
+        "watch": "bun test src --watch"
     },
     "devDependencies": {
-        "@types/react": "^18.2.28",
-        "@types/react-dom": "^18.2.13",
+        "@types/react": "latest",
+        "@types/react-dom": "latest",
         "bun-types": "latest"
     },
     "peerDependencies": {
-        "typescript": "^5.0.0"
+        "typescript": "latest"
     },
     "dependencies": {
-        "classnames": "^2.3.2",
-        "react": "^18.2.0",
-        "react-dom": "^18.2.0"
+        "classnames": "latest",
+        "react": "latest",
+        "react-dom": "latest"
     }
 }

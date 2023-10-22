@@ -1,8 +1,9 @@
 Bun.serve({
     fetch: ({ url }) => {
-        const { pathname } = new URL(url)
-        const file = pathname.slice(1) || "index.html"
+        const pathName = new URL(url).pathname
+        const fileName = pathName.replace(/^\//, "") || "index.html"
+        const fileContents = Bun.file(`./docs/${fileName}`)
 
-        return new Response(Bun.file(`./docs/${file}`))
+        return new Response(fileContents)
     },
 })
